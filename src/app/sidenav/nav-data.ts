@@ -1,56 +1,52 @@
 export const navbarData = [
   {
-    routerLink:'dashboard',
-    icon:'fal fa-home',
-    label:'Dashboard'
+    routerLink: 'dashboard',
+    icon: 'fal fa-chart-bar',
+    label: 'Dashboard'
   },
 
   {
-    routerLink:'maladies',
-    icon:'fal fa-home',
-    label:'Maladies'
+    routerLink: 'maladies',
+    icon: 'fal fa-heart',
+    label: 'Maladies'
   },
   {
-    routerLink:'epidemies',
-    icon:'fal fa-home',
-    label:'Epidemies'
+    routerLink: 'epidemies',
+    icon: 'fal fa-biohazard',
+    label: 'Epidemies'
   },
   {
-    routerLink:'preventions',
-    icon:'fal fa-home',
-    label:'Preventions'
-  },
-
-  {
-    routerLink:'traitements',
-    icon:'fal fa-home',
-    label:'Traitements'
+    routerLink: 'preventions',
+    icon: 'fal fa-shield-alt',
+    label: 'Preventions'
   },
 
   {
-    routerLink:'zones',
-    icon:'fal fa-home',
-    label:'Zones'
+    routerLink: 'traitements',
+    icon: 'fal fa-medkit',
+    label: 'Traitements'
   },
 
   {
-    routerLink:'annonces',
-    icon:'fal fa-home',
-    label:'Annonces'
-  },
-  {
-    routerLink:'Cas',
-    icon:'fal fa-home',
-    label:'Cas'
+    routerLink: 'zones',
+    icon: 'fal fa-globe',
+    label: 'Zones'
   },
 
   {
-    routerLink:'users',
-    icon:'fal fa-user',
-    label:'Users'
+    routerLink: 'annonces',
+    icon: 'fal fa-bullhorn',
+    label: 'Annonces'
+  },
+  {
+    routerLink: 'cas',
+    icon: 'fal fa-users',
+    label: 'Cas'
   },
 
-
-
-
+  {
+    routerLink: 'users',
+    icon: 'fal fa-user',
+    label: 'Users'
+  },
 ];

@@ -108,6 +108,7 @@ border: none;
   margin-left: 1.5rem;
   border-radius: 0.625rem;
 
+
 }
 
 
@@ -131,5 +132,9 @@ border: none;
 
 .sidenav-nav-link,
 .sidenav-link-text{
-  color:#000;
+  color: #535353;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
