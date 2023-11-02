@@ -1,6 +1,8 @@
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+
 }
 
 .card-container {
@@ -95,4 +97,24 @@
 
 .card-epidemie {
   background-color: #FEF3F2;
+}
+
+
+.zone-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.zone-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#map {
+  width: 700px;
+  height: 300px;
+  border-radius: 12px;
+  margin-top: 10px;
 }
