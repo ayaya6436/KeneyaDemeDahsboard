@@ -28,8 +28,8 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/user/${id}`);
   }
 
-  updateUser(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/user/${id}`, value);
+  updateUser(id: number, data: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/user/${id}`, data);
   }
 
 }
