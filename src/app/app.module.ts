@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
 
 
 import {MatIconModule} from '@angular/material/icon';
@@ -32,6 +33,7 @@ import { ZonesComponent } from './components/zones/zones.component';
 import { AnnoncesComponent } from './components/annonces/annonces.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserAddEditComponent } from './components/users/user-add-edit/user-add-edit.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { UserAddEditComponent } from './components/users/user-add-edit/user-add-
     CasComponent,
     ZonesComponent,
     AnnoncesComponent,
-    UserAddEditComponent
+    UserAddEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { UserAddEditComponent } from './components/users/user-add-edit/user-add-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
 
   ],
   providers: [],

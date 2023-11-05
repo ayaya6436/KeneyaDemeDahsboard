@@ -9,9 +9,10 @@ import { ZonesComponent } from './components/zones/zones.component';
 import { AnnoncesComponent } from './components/annonces/annonces.component';
 import { CasComponent } from './components/cas/cas.component';
 import { UsersComponent } from './components/users/users.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'maladies', component: MaladiesComponent},
   {path: 'epidemies', component: EpidemiesComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'annonces', component: AnnoncesComponent },
   {path: 'cas', component: CasComponent },
   {path: 'users', component: UsersComponent },
+  {path: 'login', component: LoginComponent },
 
 ];
 
