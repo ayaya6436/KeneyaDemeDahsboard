@@ -8,6 +8,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 
 
+
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -34,6 +35,7 @@ import { AnnoncesComponent } from './components/annonces/annonces.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserAddEditComponent } from './components/users/user-add-edit/user-add-edit.component';
 import { LoginComponent } from './components/login/login.component';
+import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/maladie-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { LoginComponent } from './components/login/login.component';
     ZonesComponent,
     AnnoncesComponent,
     UserAddEditComponent,
-    LoginComponent
+    LoginComponent,
+    MaladieAddEditComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ import { LoginComponent } from './components/login/login.component';
     MatSortModule,
     MatSnackBarModule,
     MatCardModule,
-
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,29 +3,36 @@
 </div>
 <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
 <div mat-dialog-content class="content">
-  <div class="example-container">
-    <mat-form-field appearance="outline">
-      <mat-label>Nom</mat-label>
-      <input matInput type="text" placeholder="Ex. Traore" formControlName="nom" >
-    </mat-form-field>
+  <div class="row">
+    <div class="half-width">
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput type="text" placeholder="Ex. Traore" formControlName="nom">
+      </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Prénom</mat-label>
-      <input matInput type="text" placeholder="Ex. Issa" formControlName="prenom">
-    </mat-form-field>
+    <div class="half-width">
+      <mat-form-field appearance="outline">
+        <mat-label>Prénom</mat-label>
+        <input matInput type="text" placeholder="Ex. Issa" formControlName="prenom">
+      </mat-form-field>
+    </div>
   </div>
 
+  <div class="row">
+    <div class="half-width">
+      <mat-form-field appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" placeholder="*********" formControlName="password">
+      </mat-form-field>
+    </div>
 
-  <div class="example-container1">
-    <mat-form-field appearance="outline">
-      <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" placeholder="*********" formControlName="password">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Ex. Issa@gmail.com" formControlName="email">
-    </mat-form-field>
+    <div class="half-width">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Ex. Issa@gmail.com" formControlName="email">
+      </mat-form-field>
+    </div>
   </div>
 </div>
 <div mat-dialog-actions class="action">

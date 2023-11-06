@@ -1,9 +1,9 @@
 
 import { Component, Inject,OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/core.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-user-add-edit',
@@ -21,10 +21,10 @@ export class UserAddEditComponent implements OnInit {
 
      ) {
     this.userForm = fb.group({
-      nom: '',
-      prenom: '',
-      password: '',
-      email: '',
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', Validators.required],
     });
   }
   ngOnInit(): void {

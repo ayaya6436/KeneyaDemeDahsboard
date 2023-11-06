@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/users/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
   constructor(
     private dialog: MatDialog,
     private userService: UserService,
