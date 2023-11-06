@@ -7,3 +7,10 @@
   padding-top: 20px;
   margin: 0 auto;
 }
+
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 16px; /* Ajustez la marge selon vos besoins */
+}

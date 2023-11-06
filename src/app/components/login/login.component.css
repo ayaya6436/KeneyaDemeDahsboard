@@ -1,10 +1,18 @@
-
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Supprime les barres de défilement */
+}
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
+  overflow: hidden;
 }
 
 .right {
@@ -26,11 +34,11 @@
   margin-left: 50px;
 }
 
-.title{
+.title {
   font-family: "Inter";
-font-size: 23px;
-font-style: normal;
-font-weight: 700;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .input-group {
@@ -44,7 +52,7 @@ font-weight: 700;
   top: 50%;
   transform: translateY(-50%);
   left: 10px;
-  color: #A4A4A4;
+  color: #a4a4a4;
 }
 
 input {
@@ -52,8 +60,8 @@ input {
   height: 50px;
   border: 1px solid #ced4da;
   border-radius: 4px !important;
-  background: #F0F0F0;
-  color: #A4A4A4;
+  background: #f0f0f0;
+  color: #a4a4a4;
   padding-left: 40px;
 }
 
@@ -70,7 +78,7 @@ button {
 }
 
 .slogan {
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-family: Roboto;
   font-size: 17px;
@@ -90,6 +98,6 @@ button {
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.875px;
-  color: #FFF;
+  color: #fff;
   margin-left: 50px;
 }

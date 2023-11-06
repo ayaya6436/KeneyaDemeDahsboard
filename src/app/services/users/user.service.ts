@@ -32,4 +32,9 @@ export class UserService {
     return this.http.put(`${this.baseUrl}/user/${id}`, data);
   }
 
+
+  connexion(email: string, password: string): Observable<any> {
+    const body = { email, password };
+    return this.http.post(`${this.baseUrl}/login`, body);
+  }
 }
