@@ -28,42 +28,37 @@ export class MaladiesService {
     return this.http.get(`${this.baseUrl}/maladie/${id}`);
   }
 
+  updateMaladie(id: number, maladie: any, image: File, audio: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('nom', maladie.nom);
+    formData.append('description', maladie.description);
+    formData.append('image', image, image.name);
+    formData.append('audio', audio, audio.name);
 
+    return this.http.put<any>(`${this.baseUrl}/maladie/${id}`, formData);
+  }
 
+  createMaladie(maladie: any, image: File, audio: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('maladies', JSON.stringify(
+      {
+        "id" : maladie.id,
+        "nom" : maladie.nom,
+        "description" : maladie.description,
+        "users" : {
+          'id': this.userService.getCurrentUser()?.id,
+        }
 
-updateMaladie(id: number, maladie: any, image: File, audio: File): Observable<any> {
-  const formData = new FormData();
-  formData.append('maladies', JSON.stringify(maladie));
-  formData.append('image', image);
-  formData.append('audio', audio);
-
-
-
-  return this.http.put<any>(`${this.baseUrl}/maladie/${id}`, formData);
-}
-
-createMaladie(maladie: any, image: File, audio: File): Observable<any> {
-  const formData = new FormData();
-  formData.append('maladies', JSON.stringify(
-    {
-      "id" : maladie.id,
-      "nom" : maladie.nom,
-      "description" : maladie.description,
-      "users" : {
-        'id': this.userService.getCurrentUser()?.id,
       }
-
-    }
-  ));
-  formData.append('image', image);
-  formData.append('audio', audio);
+    ));
+    formData.append('image', image);
+    formData.append('audio', audio);
 
 
 
 
-  return this.http.post<any>(`${this.baseUrl}/maladie`, formData);
-}
-
+    return this.http.post<any>(`${this.baseUrl}/maladie`, formData);
+  }
 
 
 

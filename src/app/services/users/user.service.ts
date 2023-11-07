@@ -8,19 +8,24 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class UserService {
 
   private baseUrl = 'http://localhost:8080/keneya';
-
-  constructor(private http:HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(null);
-    this.currentUser = this.currentUserSubject.asObservable();
-   }
-
-
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(null);
+    this.currentUser = this.currentUserSubject.asObservable();
+
+    // Récupérer l'utilisateur actuel depuis le localStorage lors de l'initialisation du service
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      this.setCurrentUser(JSON.parse(storedUser));
+    }
+  }
 
   public setCurrentUser(user: any): void {
     this.currentUserSubject.next(user);
+    // Stocker l'ID de l'utilisateur dans le localStorage
+    localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
   public getCurrentUser(): any {

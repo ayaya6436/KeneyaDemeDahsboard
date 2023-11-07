@@ -15,45 +15,31 @@ export class MaladieAddEditComponent {
 
 
 
-  @ViewChild('UploadFileInput') uploadFileInput: any;
-  
+  @ViewChild('uploadFileInputAudio') uploadFileInputAudio: any;
+  @ViewChild('uploadFileInputImage') uploadFileInputImage: any;
+
   myImageName = 'Select File';
   myAudioName = 'Select File';
 
-  image: any;
-  audio: any;
-
+  image!: File;
+  audio!: File;
   fileChangeEventImage(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
-      // Réinitialisez le nom du fichier
-      this.myImageName = '';
-
-      Array.from(fileInput.target.files).forEach((file: any) => {
-        console.log(file);
-        this.myImageName += file.name;
-      });
-
-      // Réinitialisez le champ de fichier pour pouvoir sélectionner le même fichier à nouveau
-      this.uploadFileInput.nativeElement.value = "";
+      this.image = fileInput.target.files[0];
+      this.myImageName = this.image.name;
+      this.uploadFileInputImage.nativeElement.value = "";
     } else {
-      this.myImageName = 'Select Image';
+      this.myImageName = 'Sélectionnez une image';
     }
   }
 
   fileChangeEventAudio(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
-      // Réinitialisez le nom du fichier
-      this.myAudioName = '';
-
-      Array.from(fileInput.target.files).forEach((file: any) => {
-        console.log(file);
-        this.myAudioName += file.name;
-      });
-
-      // Réinitialisez le champ de fichier pour pouvoir sélectionner le même fichier à nouveau
-      this.uploadFileInput.nativeElement.value = "";
+      this.audio = fileInput.target.files[0];
+      this.myAudioName = this.audio.name;
+      this.uploadFileInputAudio.nativeElement.value = "";
     } else {
-      this.myAudioName = 'Select Audio';
+      this.myAudioName = 'Sélectionnez un audio';
     }
   }
 
@@ -78,7 +64,6 @@ export class MaladieAddEditComponent {
   ngOnInit(): void {
     this.maladieForm.patchValue(this.data);
   }
-
   onFormSubmit() {
     if (this.maladieForm.valid) {
       if (this.data) {
@@ -89,7 +74,7 @@ export class MaladieAddEditComponent {
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Maladie Mise à jour!');
+            this.coreService.openSnackBar('Maladie mise à jour !');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
@@ -103,7 +88,7 @@ export class MaladieAddEditComponent {
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Maladie Créée!');
+            this.coreService.openSnackBar('Maladie créée !');
             this.dialogRef.close(true);
             console.log(val);
           },
