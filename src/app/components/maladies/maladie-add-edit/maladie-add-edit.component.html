@@ -1,22 +1,33 @@
-
-
 <div mat-dialog-title>
-  <h1>Nouveau Maladie</h1>
+  <h1>Nouvelle Maladie</h1>
 </div>
-<form [formGroup]="maladieForm" (ngSubmit)="onFormSubmit()">
+<form
+  [formGroup]="maladieForm"
+  (ngSubmit)="onFormSubmit()"
+  enctype="multipart/form-data"
+>
   <div mat-dialog-content class="content">
     <div class="row">
       <div class="half-width">
         <mat-form-field appearance="outline">
           <mat-label>Nom</mat-label>
-          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="nom">
+          <input
+            matInput
+            type="text"
+            placeholder="Ex. Paludisme"
+            formControlName="nom"
+          />
         </mat-form-field>
       </div>
 
       <div class="half-width">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput matTextareaAutosize placeholder="Ex. le palusisme.... " formControlName="description"></textarea>
+          <textarea
+            matInput
+            placeholder="Ex. le paludisme...."
+            formControlName="description"
+          ></textarea>
         </mat-form-field>
       </div>
     </div>
@@ -24,22 +35,70 @@
     <div class="row">
       <div class="half-width">
         <mat-form-field appearance="outline">
-          <mat-label>Image</mat-label>
-          <input matInput matFileInput type="files" placeholder="Ex. file.jpep" formControlName="image" accept="image/*">
+          <div class="myfilebrowser">
+            <input
+              matInput
+              [value]="myImageName"
+              placeholder="Ex. Image.jpeg"
+              formControlName="image"
+              accept="image/*"
+            />
+
+            <!-- Browse Button -->
+            <button mat-flat-button color="primary">Choisir</button>
+
+            <!-- Fetch selected filed on change -->
+            <input
+              type="file"
+              #UploadFileInput
+              id="fileUploadImage"
+              (change)="fileChangeEventImage($event)"
+              formControlName="image"
+              name="fileUploadImage"
+              multiple="multiple"
+              accept="image/*"
+            />
+          </div>
         </mat-form-field>
       </div>
 
       <div class="half-width">
         <mat-form-field appearance="outline">
-          <mat-label>Audio</mat-label>
-          <input matInput matFileInput type="files
-          " placeholder="Ex. file.mp4" formControlName="audio" accept="audio/*">
+          <div class="myfilebrowser">
+            <input
+              matInput
+              [value]="myAudioName"
+              placeholder="Ex. audio.jpeg"
+              formControlName="audio"
+              accept="audio/*"
+              readonly
+            />
+
+            <!-- Browse Button -->
+            <button mat-flat-button color="primary">Choisir</button>
+
+            <!-- Fetch selected filed on change -->
+            <input
+              type="file"
+              #UploadFileInput
+              id="fileUploadAudio"
+              (change)="fileChangeEventAudio($event)"
+              formControlName="audio"
+              name="fileUploadAudio"
+              multiple="multiple"
+              accept="audio/*"
+            />
+          </div>
         </mat-form-field>
       </div>
     </div>
   </div>
   <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>
-    <button mat-raised-button color="primary" type="submit">{{data ? 'Modifier': 'Enregistrer'}}</button>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Annuler
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Modifier" : "Enregistrer" }}
+    </button>
   </div>
 </form>

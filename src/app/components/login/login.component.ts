@@ -35,16 +35,21 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.get('password')?.value;
 
       if (email !== null && password !== null) {
-        // Continuer avec le processus de connexion
+
         this.userService.connexion(email, password).subscribe(
           (response: any) => {
+            // L'ID de l'utilisateur connecté
+            const userId = this.userService.getCurrentUser().id;
+            console.log('ID de l\'utilisateur connecté :', userId);
+            // console.log(this.userService.getCurrentUser());
+
             // Si la connexion est réussie, redirige vers le tableau de bord
             this.router.navigate(['/dashboard']);
           },
           (error) => {
             // En cas d'échec de la connexion, gérer l'erreur
             console.error('Erreur de connexion:', error);
-            alert("erre")
+            alert("erreur");
 
             // Afficher le contenu de la réponse d'erreur
             console.log('Contenu de la réponse d\'erreur:', error.error);

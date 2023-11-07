@@ -1,3 +1,4 @@
+import { UserService } from './../users/user.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,12 +10,9 @@ export class MaladiesService {
 
   private baseUrl = 'http://localhost:8080/keneya';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private userService:UserService) { }
 
-  createMaladie(maladies: object): Observable<object> {
-    const params = new HttpParams().set('maladies', JSON.stringify(maladies));
-    return this.http.post(`${this.baseUrl}/maladie`, null, { params });
-  }
+
 
 
   getMaladieList(): Observable<any> {
@@ -30,7 +28,43 @@ export class MaladiesService {
     return this.http.get(`${this.baseUrl}/maladie/${id}`);
   }
 
-  updateMaladie(id: number, data: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/maladie/${id}`, data);
-  }
+
+
+
+updateMaladie(id: number, maladie: any, image: File, audio: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('maladies', JSON.stringify(maladie));
+  formData.append('image', image);
+  formData.append('audio', audio);
+
+
+
+  return this.http.put<any>(`${this.baseUrl}/maladie/${id}`, formData);
+}
+
+createMaladie(maladie: any, image: File, audio: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('maladies', JSON.stringify(
+    {
+      "id" : maladie.id,
+      "nom" : maladie.nom,
+      "description" : maladie.description,
+      "users" : {
+        'id': this.userService.getCurrentUser()?.id,
+      }
+
+    }
+  ));
+  formData.append('image', image);
+  formData.append('audio', audio);
+
+
+
+
+  return this.http.post<any>(`${this.baseUrl}/maladie`, formData);
+}
+
+
+
+
 }
