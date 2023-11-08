@@ -1,0 +1,84 @@
+<div mat-dialog-title>
+  <h1>Nouvelle Methode de preventions</h1>
+</div>
+<form [formGroup]="preventionForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="nom" />
+        </mat-form-field>
+      </div>
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Ex. le paludisme...." formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- ... -->
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <div class="myfilebrowser">
+            <input matInput [value]="myImageName" placeholder="Ex. Image.jpeg" formControlName="image" accept="image/*"
+              readonly />
+
+            <!-- Browse Button -->
+            <button mat-flat-button color="primary" (click)="uploadFileInputImage.click()">Choisir</button>
+
+            <!-- Fetch selected filed on change -->
+            <input type="file" #uploadFileInputImage id="fileUploadImage" (change)="fileChangeEventImage($event)"
+              formControlName="image" name="fileUploadImage" multiple="multiple" accept="image/*"
+              style="display: none;" />
+          </div>
+        </mat-form-field>
+      </div>
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <div class="myfilebrowser">
+            <input matInput [value]="myAudioName" placeholder="Ex. audio.jpeg" formControlName="audio"
+              accept="audio/*" />
+
+            <!-- Browse Button -->
+            <button mat-flat-button color="primary" (click)="uploadFileInputAudio.click()">Choisir</button>
+
+            <!-- Fetch selected filed on change -->
+            <input type="file" #uploadFileInputAudio id="fileUploadAudio" (change)="fileChangeEventAudio($event)"
+              formControlName="audio" name="fileUploadAudio" multiple="multiple" accept="audio/*"
+              style="display: none;" />
+          </div>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+
+
+        <div class="half-width">
+          <mat-form-field appearance="outline">
+              <mat-select formControlName="maladie">
+              <mat-option *ngFor="let maladie of maladieList" [value]="maladie.id">
+                {{ maladie.nom }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Annuler
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Modifier" : "Enregistrer" }}
+    </button>
+  </div>
+</form>

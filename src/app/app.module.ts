@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -36,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserAddEditComponent } from './components/users/user-add-edit/user-add-edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/maladie-add-edit.component';
+import { PreventionAddEditComponent } from './components/preventions/prevention-add-edit/prevention-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/
     AnnoncesComponent,
     UserAddEditComponent,
     LoginComponent,
-    MaladieAddEditComponent
+    MaladieAddEditComponent,
+    PreventionAddEditComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/
     MatSortModule,
     MatSnackBarModule,
     MatCardModule,
-  
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
