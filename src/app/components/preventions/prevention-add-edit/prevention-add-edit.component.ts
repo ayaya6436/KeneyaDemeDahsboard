@@ -56,7 +56,7 @@ maladieList :any[] =[]
       description: ['', Validators.required],
       image: ['', Validators.required],
       audio: ['', Validators.required],
-      maladie: ['', Validators.required],
+      maladies: ['', Validators.required],
     });
 // Charge la liste des maladies lors de l'initialisation du composant
     this.maladieService.getMaladieList().subscribe((maladies: any) => {
