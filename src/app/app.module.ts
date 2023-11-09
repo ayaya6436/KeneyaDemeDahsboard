@@ -39,6 +39,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/maladie-add-edit.component';
 import { PreventionAddEditComponent } from './components/preventions/prevention-add-edit/prevention-add-edit.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { TraitementAddEditComponent } from './components/traitements/traitement-add-edit/traitement-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     LoginComponent,
     MaladieAddEditComponent,
     PreventionAddEditComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    TraitementAddEditComponent
   ],
   imports: [
     BrowserModule,

@@ -38,8 +38,7 @@ export class MaladieAddEditComponent {
     this.maladieForm = fb.group({
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      image: ['', Validators.required],
-      audio: ['', Validators.required]
+      
     });
   }
 
