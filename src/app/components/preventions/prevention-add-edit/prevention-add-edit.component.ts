@@ -12,33 +12,20 @@ import { PreventionService } from 'src/app/services/preventions/prevention.servi
 })
 export class PreventionAddEditComponent {
 
-  @ViewChild('uploadFileInputAudio') uploadFileInputAudio: any;
-  @ViewChild('uploadFileInputImage') uploadFileInputImage: any;
-
-  myImageName = 'Select File';
-  myAudioName = 'Select File';
-
   image!: File;
   audio!: File;
-  fileChangeEventImage(fileInput: any) {
-    if (fileInput.target.files && fileInput.target.files[0]) {
-      this.image = fileInput.target.files[0];
-      this.myImageName = this.image.name;
-      this.uploadFileInputImage.nativeElement.value = "";
-    } else {
-      this.myImageName = 'Sélectionnez une image';
-    }
+
+  audioSelected(event: any): void {
+    this.audio = event.target.files[0];
+    console.log(this.audio);
   }
 
-  fileChangeEventAudio(fileInput: any) {
-    if (fileInput.target.files && fileInput.target.files[0]) {
-      this.audio = fileInput.target.files[0];
-      this.myAudioName = this.audio.name;
-      this.uploadFileInputAudio.nativeElement.value = "";
-    } else {
-      this.myAudioName = 'Sélectionnez un audio';
-    }
+  imageSelected(event: any): void {
+    this.image = event.target.files[0];
+    console.log(this.image);
   }
+
+
 maladieList :any[] =[]
 
   preventionForm: FormGroup;
@@ -69,6 +56,8 @@ maladieList :any[] =[]
   }
   onFormSubmit() {
     if (this.preventionForm.valid) {
+      this.preventionForm.get('image')!.setValue('');
+      this.preventionForm.get('audio')!.setValue('');
       if (this.data) {
         this.preventionService.updatePrevention(
           this.data.id,

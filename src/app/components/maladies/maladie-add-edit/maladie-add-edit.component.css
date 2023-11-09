@@ -42,26 +42,39 @@ mat-form-field {
   }
 }
 
-#fileUploadImage {
-  position: absolute;
-  z-index: 9;
-  opacity: 0;
-  height: 100%;
+
+.inputFile input {
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
   width: 100%;
-  left: 0px;
-  top: 0px;
-  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 10px;
 }
 
 
+.inputFile input:hover {
+  border: 1px solid #0065FF;
+}
 
-#fileUploadAudio {
-  position: absolute;
-  z-index: 9;
-  opacity: 0;
-  height: 100%;
-  width: 100%;
-  left: 0px;
-  top: 0px;
-  cursor: pointer;
+
+.inputFile input:focus {
+  border: 1px solid #0065FF;
+}
+/* Style des labels */
+.inputFile label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+.inputFile input {
+
+}
+
+
+.inputFile input::placeholder {
+  color: #aaa;
 }

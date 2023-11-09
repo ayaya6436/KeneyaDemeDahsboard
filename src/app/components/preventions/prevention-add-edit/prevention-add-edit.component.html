@@ -20,61 +20,36 @@
     </div>
 
     <div class="row">
-      <!-- ... -->
-
       <div class="half-width">
-        <mat-form-field appearance="outline">
-          <div class="myfilebrowser">
-            <input matInput [value]="myImageName" placeholder="Ex. Image.jpeg" formControlName="image" accept="image/*"
-              readonly />
-
-            <!-- Browse Button -->
-            <button mat-flat-button color="primary" (click)="uploadFileInputImage.click()">Choisir</button>
-
-            <!-- Fetch selected filed on change -->
-            <input type="file" #uploadFileInputImage id="fileUploadImage" (change)="fileChangeEventImage($event)"
-              formControlName="image" name="fileUploadImage" multiple="multiple" accept="image/*"
-              style="display: none;" />
-          </div>
-        </mat-form-field>
-      </div>
-
-      <div class="half-width">
-        <mat-form-field appearance="outline">
-          <div class="myfilebrowser">
-            <input matInput [value]="myAudioName" placeholder="Ex. audio.jpeg" formControlName="audio"
-              accept="audio/*" />
-
-            <!-- Browse Button -->
-            <button mat-flat-button color="primary" (click)="uploadFileInputAudio.click()">Choisir</button>
-
-            <!-- Fetch selected filed on change -->
-            <input type="file" #uploadFileInputAudio id="fileUploadAudio" (change)="fileChangeEventAudio($event)"
-              formControlName="audio" name="fileUploadAudio" multiple="multiple" accept="audio/*"
-              style="display: none;" />
-          </div>
-        </mat-form-field>
-      </div>
-
-      <div class="row">
-
-
-        <div class="half-width">
-          <mat-form-field appearance="outline">
-              <mat-select formControlName="maladies">
-              <mat-option *ngFor="let maladie of maladieList" [value]="maladie.id">
-                {{ maladie.nom }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div class="inputFile">
+          <label for="fileUploadImage">Image</label>
+          <input id="fileUploadImage" type="file" (change)="imageSelected($event)" formControlName="image" />
         </div>
-
       </div>
 
+      <div class="half-width">
+        <div class="inputFile">
+          <label for="fileUploadAudio">Audio</label>
+          <input id="fileUploadAudio" type="file" (change)="audioSelected($event)" formControlName="audio" />
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="maladies" placeholder="Ex. Paludisme">
+            <mat-option *ngFor="let maladie of maladieList" [value]="maladie.id">
+              {{ maladie.nom }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
   </div>
   <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button" [mat-dialog-close]="false">
+    <button mat-raised-button type="button" [mat-dialog-close]="false" color="warn">
       Annuler
     </button>
     <button mat-raised-button color="primary" type="submit">
