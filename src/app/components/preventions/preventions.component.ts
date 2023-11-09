@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PreventionAddEditComponent } from './prevention-add-edit/prevention-add-edit.component';
+import { CoreService } from 'src/app/core/core.service';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-preventions',
@@ -21,6 +23,7 @@ export class PreventionsComponent {
   constructor(
     private dialog: MatDialog,
     private preventionService: PreventionService,
+    private coreService : CoreService
 
   ){}
 
@@ -63,18 +66,34 @@ export class PreventionsComponent {
     }
   }
 
+  deletePrevention(id: number) {
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      data: {
+        title: 'Confirmation',
+        message: 'Voulez-vous vraiment supprimer cette prévention ?',
+      },
+    });
 
-  deletePrevention(id:number) {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // L'utilisateur a confirmé la suppression
+        this.performDeletePrevention(id);
+      }
+    });
+  }
+
+  performDeletePrevention(id: number) {
     this.preventionService.deletePrevention(id).subscribe({
-      next:(res:any) => {
-        alert("Prevention Supprimer avec success!");
+      next: (res: any) => {
+        this.coreService.openSnackBar('Prévention supprimée avec succès !');
         this.getPreventionList();
       },
-      error:(err:any) =>{
+      error: (err: any) => {
         console.error(err);
-      }
-    })
+      },
+    });
   }
+
 
   openEditForm(data:any) {
     const dialogRef =this.dialog.open(PreventionAddEditComponent,{

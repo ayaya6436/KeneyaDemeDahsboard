@@ -70,11 +70,6 @@ mat-form-field {
 }
 
 
-.inputFile input {
-
-}
-
-
 .inputFile input::placeholder {
   color: #aaa;
 }

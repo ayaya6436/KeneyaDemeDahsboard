@@ -1,3 +1,4 @@
+import { CoreService } from './../../core/core.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MaladiesService } from 'src/app/services/maladies/maladies.service';
@@ -5,6 +6,7 @@ import { MaladieAddEditComponent } from './maladie-add-edit/maladie-add-edit.com
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-maladies',
@@ -21,6 +23,7 @@ export class MaladiesComponent implements OnInit{
   constructor(
     private dialog: MatDialog,
     private maladieService: MaladiesService,
+    private coreService : CoreService
 
   ){}
 
@@ -64,18 +67,33 @@ export class MaladiesComponent implements OnInit{
   }
 
 
-  deleteMaladie(id:number) {
-    this.maladieService.deleteMaladie(id).subscribe({
-      next:(res:any) => {
-        alert("Maladie Supprimer avec success!");
-        this.getMaladieList();
+  deleteMaladie(id: number) {
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      data: {
+        title: 'Confirmation',
+        message: 'Voulez-vous vraiment supprimer cette maladie ?',
       },
-      error:(err:any) =>{
-        console.error(err);
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // L'utilisateur a confirmé la suppression
+        this.performMaladiePrevention(id);
       }
-    })
+    });
   }
 
+  performMaladiePrevention(id: number) {
+    this.maladieService.deleteMaladie(id).subscribe({
+      next: (res: any) => {
+        this.coreService.openSnackBar('Prévention supprimée avec succès !');
+        this.getMaladieList();
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
   openEditForm(data:any) {
     const dialogRef =this.dialog.open(MaladieAddEditComponent,{
         data,

@@ -7,6 +7,9 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CoreService } from 'src/app/core/core.service';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
+
 
 @Component({
   selector: 'app-users',
@@ -20,10 +23,12 @@ export class UsersComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
+
   constructor(
     private dialog: MatDialog,
     private userService: UserService,
+    private coreService : CoreService
+
 
   ){}
 
@@ -68,16 +73,33 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  deleteUser(id:number) {
+
+  deleteUser(id: number) {
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      data: {
+        title: 'Confirmation',
+        message: 'Voulez-vous vraiment supprimer cet utulisateur ?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // L'utilisateur a confirmé la suppression
+        this.performUserPrevention(id);
+      }
+    });
+  }
+
+  performUserPrevention(id: number) {
     this.userService.deleteUser(id).subscribe({
-      next:(res:any) => {
-        alert("User deleted successfully");
+      next: (res: any) => {
+        this.coreService.openSnackBar('Prévention supprimée avec succès !');
         this.getUserList();
       },
-      error:(err:any) =>{
+      error: (err: any) => {
         console.error(err);
-      }
-    })
+      },
+    });
   }
 
   openEditForm(data:any) {
