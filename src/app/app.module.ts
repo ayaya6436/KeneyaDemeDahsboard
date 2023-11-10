@@ -40,6 +40,7 @@ import { MaladieAddEditComponent } from './components/maladies/maladie-add-edit/
 import { PreventionAddEditComponent } from './components/preventions/prevention-add-edit/prevention-add-edit.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { TraitementAddEditComponent } from './components/traitements/traitement-add-edit/traitement-add-edit.component';
+import { EpidemieAddEditComponent } from './components/epidemies/epidemie-add-edit/epidemie-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { TraitementAddEditComponent } from './components/traitements/traitement-
     MaladieAddEditComponent,
     PreventionAddEditComponent,
     ConfirmationComponent,
-    TraitementAddEditComponent
+    TraitementAddEditComponent,
+    EpidemieAddEditComponent
   ],
   imports: [
     BrowserModule,

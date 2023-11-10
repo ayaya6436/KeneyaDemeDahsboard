@@ -1,0 +1,81 @@
+<div mat-dialog-title>
+  <h1>Nouvelle Epidemie</h1>
+</div>
+<form [formGroup]="epidemieForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="nom" />
+        </mat-form-field>
+      </div>
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Victimes</mat-label>
+          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="victimes" />
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option *ngFor="let val of status" [value]="val">{{val}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+        <mat-label>Gravite</mat-label>
+        <mat-select formControlName="gravite">
+            <mat-option *ngFor="let val of gravite" [value]="val">{{val}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+
+      <div class="half-width">
+        <div class="inputFile">
+          <label for="fileUploadAudio">Audio</label>
+          <input id="fileUploadAudio" type="file" (change)="audioSelected($event)" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="maladies" placeholder="Ex. Paludisme">
+            <mat-option *ngFor="let maladie of maladieList" [value]="maladie.id">
+              {{ maladie.nom }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false" color="warn">
+      Annuler
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Modifier" : "Enregistrer" }}
+    </button>
+  </div>
+</form>
