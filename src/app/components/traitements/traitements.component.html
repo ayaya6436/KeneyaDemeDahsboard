@@ -14,6 +14,15 @@
     <div class="table-container">
       <table mat-table [dataSource]="dataSource" matSort>
 
+        <ng-container matColumnDef="maladie">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Maladie </th>
+          <td mat-cell *matCellDef="let row">
+            <ng-container *ngIf="maladieDetails[row.id]">
+              {{ maladieDetails[row.id].nom }}
+            </ng-container>
+          </td>
+        </ng-container>
+
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>

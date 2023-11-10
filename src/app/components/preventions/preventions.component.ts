@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PreventionAddEditComponent } from './prevention-add-edit/prevention-add-edit.component';
 import { CoreService } from 'src/app/core/core.service';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
+import { MaladiesService } from 'src/app/services/maladies/maladies.service';
 
 @Component({
   selector: 'app-preventions',
@@ -14,8 +15,9 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
   styleUrls: ['./preventions.component.css']
 })
 export class PreventionsComponent {
+  maladieDetails: { [key: number]: any } = {};
 
-  displayedColumns: string[] = ['id', 'nom', 'description', 'audio','image','action'];
+  displayedColumns: string[] = ['id','maladie' ,'nom', 'description', 'audio','image','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,6 +25,7 @@ export class PreventionsComponent {
   constructor(
     private dialog: MatDialog,
     private preventionService: PreventionService,
+    private maladieService: MaladiesService,
     private coreService : CoreService
 
   ){}
@@ -43,18 +46,29 @@ export class PreventionsComponent {
     });
   }
 
-  getPreventionList(){
+  getPreventionList() {
     this.preventionService.getPreventionList().subscribe({
-      next:(res:any) => {
+      next: (res: any) => {
         this.dataSource = new MatTableDataSource(res);
+
+        // Récupérer les détails de la maladie pour chaque prévention
+        res.forEach((prevention: any) => {
+          if (prevention.maladies) {
+            this.maladieService.getMaladie(prevention.maladies.id).subscribe((maladieDetails: any) => {
+              this.maladieDetails[prevention.id] = maladieDetails;
+            });
+          }
+        });
+
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-       },
-       error:(err:any) =>{
-         console.error(err);
-       }
-     })
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
   }
+
 
 
   applyFilter(event: Event) {

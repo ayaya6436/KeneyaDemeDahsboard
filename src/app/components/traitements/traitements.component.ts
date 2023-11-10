@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CoreService } from 'src/app/core/core.service';
+import { MaladiesService } from 'src/app/services/maladies/maladies.service';
+
 
 @Component({
   selector: 'app-traitements',
@@ -14,14 +16,16 @@ import { CoreService } from 'src/app/core/core.service';
   styleUrls: ['./traitements.component.css']
 })
 export class TraitementsComponent {
-  displayedColumns: string[] = ['id', 'nom', 'description', 'audio','image','action'];
+  displayedColumns: string[] = ['id', 'maladie','nom','description', 'audio','image','action'];
   dataSource!: MatTableDataSource<any>;
+  maladieDetails: { [key: number]: any } = {};
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private dialog: MatDialog,
     private traitementService: TraitementService,
+    private maladieService : MaladiesService,
     private coreService : CoreService
 
   ){}
@@ -46,6 +50,14 @@ export class TraitementsComponent {
     this.traitementService.getTraitementList().subscribe({
       next:(res:any) => {
         this.dataSource = new MatTableDataSource(res);
+         // Récupérer les détails de la maladie pour chaque prévention
+         res.forEach((traitement: any) => {
+          if (traitement.maladies) {
+            this.maladieService.getMaladie(traitement.maladies.id).subscribe((maladieDetails: any) => {
+              this.maladieDetails[traitement.id] = maladieDetails;
+            });
+          }
+        });
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
        },
