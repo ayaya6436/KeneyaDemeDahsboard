@@ -1,0 +1,41 @@
+<div mat-dialog-title>
+  <h1>Nouvel Maladie </h1>
+</div>
+<form [formGroup]="annonceForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Titre</mat-label>
+          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="titre" />
+        </mat-form-field>
+      </div>
+
+      <div class="half-width">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Ex. le paludisme...." formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="half-width">
+        <div class="inputFile">
+          <label for="fileUploadImage">Image</label>
+          <input id="fileUploadImage" type="file" (change)="imageSelected($event)"  />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false" color="warn">
+      Annuler
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Modifier" : "Enregistrer" }}
+    </button>
+  </div>
+</form>

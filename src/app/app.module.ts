@@ -41,6 +41,7 @@ import { PreventionAddEditComponent } from './components/preventions/prevention-
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { TraitementAddEditComponent } from './components/traitements/traitement-add-edit/traitement-add-edit.component';
 import { EpidemieAddEditComponent } from './components/epidemies/epidemie-add-edit/epidemie-add-edit.component';
+import { AnnonceAddEditComponent } from './components/annonces/annonce-add-edit/annonce-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { EpidemieAddEditComponent } from './components/epidemies/epidemie-add-ed
     PreventionAddEditComponent,
     ConfirmationComponent,
     TraitementAddEditComponent,
-    EpidemieAddEditComponent
+    EpidemieAddEditComponent,
+    AnnonceAddEditComponent
   ],
   imports: [
     BrowserModule,

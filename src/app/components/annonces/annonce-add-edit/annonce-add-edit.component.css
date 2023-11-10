@@ -1,0 +1,75 @@
+.content {
+  padding-top: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+.half-width {
+  flex: 1;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.action {
+  padding: 0px 25px 20px;
+}
+
+.action button {
+  flex: 1;
+}
+
+/* styles.css */
+
+.myform-wrapper {
+  margin: 50px;
+  width: 350px;
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+
+    button {
+      width: 30%;
+    }
+  }
+}
+
+
+.inputFile input {
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+
+.inputFile input:hover {
+  border: 1px solid #0065FF;
+}
+
+
+.inputFile input:focus {
+  border: 1px solid #0065FF;
+}
+/* Style des labels */
+.inputFile label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+.inputFile input::placeholder {
+  color: #aaa;
+}
