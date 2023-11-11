@@ -28,6 +28,11 @@ export class UserService {
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
+  logout(): void {
+    // Supprimer l'utilisateur du localStorage et mettre à jour l'observable
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
   public getCurrentUser(): any {
     return this.currentUserSubject.value;
   }
@@ -65,7 +70,5 @@ export class UserService {
     );
   }
 
-  logout(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/logout`, {});
-  }
+
 }

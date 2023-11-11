@@ -16,5 +16,13 @@
           <i class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</i>
         </a>
     </li>
+    <div>
+      <!-- Afficher le nom de l'utilisateur s'il est connecté -->
+      <p *ngIf="currentUser">Bonjour, {{ currentUser.nom }} {{ currentUser.prenom }}!</p>
+
+      <!-- Bouton de déconnexion -->
+      <button *ngIf="currentUser" mat-raised-button  color="warn" (click)="logout()">Déconnexion</button>
+    </div>
   </ul>
+
 </div>

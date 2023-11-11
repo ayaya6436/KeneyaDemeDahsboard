@@ -42,6 +42,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { TraitementAddEditComponent } from './components/traitements/traitement-add-edit/traitement-add-edit.component';
 import { EpidemieAddEditComponent } from './components/epidemies/epidemie-add-edit/epidemie-add-edit.component';
 import { AnnonceAddEditComponent } from './components/annonces/annonce-add-edit/annonce-add-edit.component';
+import { ZoneAddEditComponent } from './components/zones/zone-add-edit/zone-add-edit.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { AnnonceAddEditComponent } from './components/annonces/annonce-add-edit/
     ConfirmationComponent,
     TraitementAddEditComponent,
     EpidemieAddEditComponent,
-    AnnonceAddEditComponent
+    AnnonceAddEditComponent,
+    ZoneAddEditComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

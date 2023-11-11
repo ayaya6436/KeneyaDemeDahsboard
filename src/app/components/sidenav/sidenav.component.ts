@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { NavigationEnd, Router } from '@angular/router';
+import { UserService } from 'src/app/services/users/user.service';
 
 interface SideNavToggle{
 screenWidth: number;
@@ -15,8 +16,9 @@ collapsed: boolean;
 })
 export class SidenavComponent implements OnInit {
   isLogin: boolean = false;
+  currentUser: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private userService: UserService) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         this.isLogin = this.router.url === '/login';
@@ -26,6 +28,9 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     //pour prendre la largeur
     this.screenWidth = window.innerWidth;
+    this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -56,5 +61,11 @@ export class SidenavComponent implements OnInit {
 
   }
 
+
+  logout(): void {
+    this.userService.logout();
+      this.router.navigate(['/login']);
+  
+  }
 
 }
