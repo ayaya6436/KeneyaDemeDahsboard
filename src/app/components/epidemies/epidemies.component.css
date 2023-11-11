@@ -12,5 +12,7 @@
 .btn {
   display: flex;
   justify-content: flex-end;
-  margin-right: 16px; /* Ajustez la marge selon vos besoins */
+  margin-right: 16px;
+  border: none;
+
 }

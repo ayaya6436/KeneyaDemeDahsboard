@@ -8,10 +8,11 @@
   margin: 0 auto;
 }
 
-/* .main-body mat-form-field{
-  width: 100%;
-} */
-/* .blue{
-  background-color: #0065FF !important;
-  color: white !important;
-} */
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 16px;
+  border: none;
+
+}

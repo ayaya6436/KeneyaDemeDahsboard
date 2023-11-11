@@ -143,3 +143,9 @@ border: none;
   font-weight: 400;
   line-height: normal;
 }
+
+
+.logout{
+  display: flex;
+  margin-top: 70px;
+}

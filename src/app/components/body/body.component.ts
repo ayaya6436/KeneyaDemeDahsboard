@@ -1,11 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent {
+export class BodyComponent implements OnInit {
+  currentUser: any;
+
+
+  public constructor( private userService:UserService){
+
+  }
+  ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
 
 
   @Input() collapsed = false;
