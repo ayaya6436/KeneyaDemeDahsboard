@@ -50,9 +50,4 @@ export const navbarData = [
     label: 'Users'
   },
 
-  {
-    routerLink: 'settings',
-    icon: 'fal fa-user',
-    label: 'Users'
-  },
 ];

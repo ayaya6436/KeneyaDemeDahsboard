@@ -64,5 +64,7 @@ export class MaladiesService {
   }
 
 
-
+  getNumberOfMaladies(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/maladies/count`);
+  }
 }

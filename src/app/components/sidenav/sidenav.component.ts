@@ -65,7 +65,7 @@ export class SidenavComponent implements OnInit {
   logout(): void {
     this.userService.logout();
       this.router.navigate(['/login']);
-  
+
   }
 
 }

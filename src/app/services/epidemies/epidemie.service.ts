@@ -48,4 +48,8 @@ getMaladieList(){
 
     return this.http.post<any>(`${this.baseUrl}/epidemie`, formData);
   }
+
+  getNumberOfEpidemie(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/epidemies/count`);
+  }
 }

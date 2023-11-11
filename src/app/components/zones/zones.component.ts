@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CoreService } from 'src/app/core/core.service';
 import { MaladiesService } from 'src/app/services/maladies/maladies.service';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-zones',
@@ -17,6 +18,7 @@ export class ZonesComponent {
   displayedColumns: string[] = ['id', 'maladie','nom','longitude', 'latitude','action'];
   dataSource!: MatTableDataSource<any>;
   maladieDetails: { [key: number]: any } = {};
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -76,7 +78,7 @@ export class ZonesComponent {
   }
 
   deleteZone(id: number) {
-    const dialogRef = this.dialog.open(ZoneAddEditComponent, {
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
       data: {
         title: 'Confirmation',
         message: 'Voulez-vous vraiment supprimer cette Zone ?',
@@ -118,4 +120,6 @@ export class ZonesComponent {
     });
 
   }
+
+
 }

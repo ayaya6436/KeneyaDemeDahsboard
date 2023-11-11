@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { MaladiesService } from '../maladies/maladies.service';
 
 @Injectable({
@@ -42,5 +42,11 @@ getMaladieList(){
 
   createZone(zones: object): Observable<object> {
     return this.http.post(`${this.baseUrl}`+'/zone', zones);
+  }
+
+
+
+  getNumberOfZones(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/zones/count`);
   }
 }
