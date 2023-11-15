@@ -147,5 +147,10 @@ border: none;
 
 .logout{
   display: flex;
-  margin-top: 70px;
+  margin-top: 0px;
+}
+
+
+body{
+  overflow-y: scroll;
 }
