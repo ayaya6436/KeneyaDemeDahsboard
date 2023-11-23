@@ -57,10 +57,11 @@ export class DashboardComponent implements AfterViewInit {
             popupAnchor: [0, -32] // Point d'ancrage du popup par rapport au marqueur (en haut du marqueur)
           });
 
-          const marker = L.marker([zone.latitude, zone.longitude], { icon: customIcon })
-            .bindPopup(`<strong>${zone.nom}</strong>`)
-            .addTo(this.map);
+          const maladieNom = zone.maladies ? zone.maladies.nom : 'Maladie inconnue';
 
+          const marker = L.marker([zone.latitude, zone.longitude], { icon: customIcon })
+            .bindPopup(`<strong>${zone.nom}</strong><br>Maladie: ${maladieNom}`)
+            .addTo(this.map);
           this.zoneMarkers.push(marker);
         });
       },
