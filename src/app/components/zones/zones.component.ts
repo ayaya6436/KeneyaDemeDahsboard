@@ -15,7 +15,7 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
   styleUrls: ['./zones.component.css']
 })
 export class ZonesComponent {
-  displayedColumns: string[] = ['id', 'maladie','nom','longitude', 'latitude','action'];
+  displayedColumns: string[] = ['id','nom','longitude', 'latitude','action'];
   dataSource!: MatTableDataSource<any>;
   maladieDetails: { [key: number]: any } = {};
 

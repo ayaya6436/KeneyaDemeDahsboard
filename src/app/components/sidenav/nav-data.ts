@@ -40,7 +40,7 @@ export const navbarData = [
   },
   {
     routerLink: 'cas',
-    icon: 'fal fa-users',
+    icon: 'fal fa-stethoscope',
     label: 'Cas'
   },
 

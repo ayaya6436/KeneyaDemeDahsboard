@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { CasService } from 'src/app/services/cas/cas.service';
 import { EpidemieService } from 'src/app/services/epidemies/epidemie.service';
 import { MaladiesService } from 'src/app/services/maladies/maladies.service';
 import { ZoneService } from 'src/app/services/zones/zone.service';
@@ -15,10 +16,15 @@ export class DashboardComponent implements AfterViewInit {
  numberOfMaladies: any;
  numberOfZones:any;
  numberOfEpidemie:any;
+ numberOfCas:any;
 
-  constructor(private zoneService: ZoneService,
+  constructor(
+    private zoneService: ZoneService,
     private maladieService : MaladiesService,
-    private epidemieService : EpidemieService
+    private epidemieService : EpidemieService,
+    private casService : CasService,
+
+
 
     ) {}
 
@@ -27,7 +33,8 @@ export class DashboardComponent implements AfterViewInit {
     this.loadZoneMarkers();
     this.loadNumberOfMaladies();
     this.loadNumberOfZones();
-    this.loadNumberOfEpidemies()
+    this.loadNumberOfEpidemies(),
+    this.loadNumberOfCas();
 
   }
 
@@ -58,7 +65,7 @@ export class DashboardComponent implements AfterViewInit {
           });
 
           const marker = L.marker([zone.latitude, zone.longitude], { icon: customIcon })
-            .bindPopup(`<strong>${zone.nom}</strong>`)
+            .bindPopup(`<strong>${zone.nom},${zone.maladie}</strong> <br>`)
             .addTo(this.map);
 
           this.zoneMarkers.push(marker);
@@ -97,6 +104,18 @@ export class DashboardComponent implements AfterViewInit {
     this.epidemieService.getNumberOfEpidemie().subscribe({
       next:(numberOfEpidemie:any)=>{
         this.numberOfEpidemie = numberOfEpidemie
+      },
+      error:(err:any)=>{
+        console.log(err)
+      }
+    })
+  }
+
+
+  loadNumberOfCas():void{
+    this.casService.getNumberOfCas().subscribe({
+      next:(numberOfCas:any)=>{
+        this.numberOfCas = numberOfCas
       },
       error:(err:any)=>{
         console.log(err)

@@ -13,6 +13,7 @@ body {
   justify-content: center;
   height: 90vh;
   overflow: hidden;
+  border-radius: 30px;
 }
 
 .right {
@@ -32,6 +33,7 @@ body {
   width: 500px;
   height: 600px;
   margin-left: 50px;
+ 
 }
 
 .title {
