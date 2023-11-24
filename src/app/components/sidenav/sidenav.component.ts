@@ -2,6 +2,9 @@ import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/
 import { navbarData } from './nav-data';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from 'src/app/services/users/user.service';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
+import { CoreService } from 'src/app/core/core.service';
+import { MatDialog } from '@angular/material/dialog';
 
 interface SideNavToggle{
 screenWidth: number;
@@ -18,7 +21,10 @@ export class SidenavComponent implements OnInit {
   isLogin: boolean = false;
   currentUser: any;
 
-  constructor(private router: Router,private userService: UserService) {
+  constructor(private router: Router,
+    private userService: UserService,
+    private coreService: CoreService,
+    private dialog: MatDialog,) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         this.isLogin = this.router.url === '/login';
@@ -65,6 +71,32 @@ export class SidenavComponent implements OnInit {
   logout(): void {
     this.userService.logout();
       this.router.navigate(['/login']);
+
+  }
+
+
+
+  deconexion(): void {
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      data: {
+        title: 'Confirmation',
+        message: 'Voulez-vous vraiment vous déconnecter ?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.performConfirmDeconexion();
+      }
+    });
+  }
+
+
+  performConfirmDeconexion() {
+    this.userService.logout()
+        this.coreService.openSnackBar('Utisateur deconnecte avec succès !');
+      this.router.navigate(['/login']);
+
 
   }
 
