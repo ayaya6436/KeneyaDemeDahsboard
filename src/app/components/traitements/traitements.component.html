@@ -36,13 +36,25 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
           <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
         </ng-container>
-
-        <!-- audio Column -->
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-          <td mat-cell *matCellDef="let row"> {{row.description}} </td>
-        </ng-container>
-
+       <!-- description Column -->
+       <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="container-description">
+            <div *ngIf="!row.showFullDescription">
+              {{ row.description | slice:0:50 }} <!-- Ajustez le nombre de caractères au besoin -->
+              <span *ngIf="row.description.length > 50">
+                <button mat-icon-button color="primary" (click)="afficherPopup(row.description)">
+                  <mat-icon>open_in_new</mat-icon>
+                </button>
+              </span>
+            </div>
+            <div *ngIf="row.showFullDescription">
+              {{ row.description }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
         <!-- image Column -->
         <ng-container matColumnDef="image">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
@@ -59,7 +71,7 @@
             <!-- Use the audio tag to embed the audio file -->
             <audio controls>
               <source [src]="'http://localhost/'+row.audio" type="audio/mp3">
-              Your browser does not support the audio element.
+
             </audio>
           </td>
         </ng-container>

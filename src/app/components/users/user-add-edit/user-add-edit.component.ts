@@ -38,7 +38,7 @@ export class UserAddEditComponent implements OnInit {
           this.userService.updateUser(this.data.id,this.userForm.value).subscribe({
             next:(val:any) => {
               // alert('User Mise a jour!');
-              this.coreService.openSnackBar('User Mise a jour!');
+              this.coreService.openSnackBar('Utilisateur Mise a jour!');
               this.dialogRef.close(true);
             },
             error:(err:any) =>{
@@ -50,7 +50,7 @@ export class UserAddEditComponent implements OnInit {
           this.userService.createUser(this.userForm.value).subscribe({
         next:(val:any) => {
           // alert('User Creer !');
-          this.coreService.openSnackBar('User Creer!');
+          this.coreService.openSnackBar('Utilisateur Creer avec succes!');
           this.dialogRef.close(true);
         },
         error:(err:any) =>{

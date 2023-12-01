@@ -38,7 +38,7 @@ export class MaladieAddEditComponent {
     this.maladieForm = fb.group({
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      
+
     });
   }
 
@@ -55,7 +55,7 @@ export class MaladieAddEditComponent {
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Maladie mise à jour !');
+            this.coreService.openSnackBar('Maladie mise à jour avec success !');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
@@ -69,7 +69,7 @@ export class MaladieAddEditComponent {
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Maladie créée !');
+            this.coreService.openSnackBar('Maladie créée avec success !');
             this.dialogRef.close(true);
             console.log(val);
           },

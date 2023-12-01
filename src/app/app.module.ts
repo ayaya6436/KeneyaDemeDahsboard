@@ -44,6 +44,7 @@ import { EpidemieAddEditComponent } from './components/epidemies/epidemie-add-ed
 import { AnnonceAddEditComponent } from './components/annonces/annonce-add-edit/annonce-add-edit.component';
 import { ZoneAddEditComponent } from './components/zones/zone-add-edit/zone-add-edit.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { DescriptionComponent } from './components/description/description.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     EpidemieAddEditComponent,
     AnnonceAddEditComponent,
     ZoneAddEditComponent,
-    LogoutComponent
+    LogoutComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ export const navbarData = [
 
   {
     routerLink: 'maladies',
-    icon: 'fal fa-heart',
+    icon: 'fal fa-stethoscope',
     label: 'Maladies'
   },
   {

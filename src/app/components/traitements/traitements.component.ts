@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CoreService } from 'src/app/core/core.service';
 import { MaladiesService } from 'src/app/services/maladies/maladies.service';
+import { DescriptionComponent } from '../description/description.component';
 
 
 @Component({
@@ -81,7 +82,7 @@ export class TraitementsComponent {
     const dialogRef = this.dialog.open(ConfirmationComponent, {
       data: {
         title: 'Confirmation',
-        message: 'Voulez-vous vraiment supprimer cette Traitement ?',
+        message: 'Voulez-vous vraiment supprimer cette methode de traitement ?',
       },
     });
 
@@ -96,7 +97,7 @@ export class TraitementsComponent {
   performDeleteTraitement(id: number) {
     this.traitementService.deleteTraitement(id).subscribe({
       next: (res: any) => {
-        this.coreService.openSnackBar('Traitement supprimée avec succès !');
+        this.coreService.openSnackBar('Methode de traitement supprimée avec succès !');
         this.getTraitementList();
       },
       error: (err: any) => {
@@ -120,4 +121,24 @@ export class TraitementsComponent {
     });
 
   }
+
+  showFullDescription(id: number) {
+    // Basculer l'état de la description complète pour l'élément spécifique
+    this.dataSource.data = this.dataSource.data.map((row: any) => {
+      if (row.id === id) {
+        row.showFullDescription = !row.showFullDescription;
+      }
+      return row;
+    });
+  }
+
+  afficherPopup(description: string) {
+    this.dialog.open(DescriptionComponent, {
+      data: {
+        description: description,
+      },
+    });
+  }
+
+
 }

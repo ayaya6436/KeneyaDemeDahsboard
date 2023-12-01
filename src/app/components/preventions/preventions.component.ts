@@ -8,6 +8,7 @@ import { PreventionAddEditComponent } from './prevention-add-edit/prevention-add
 import { CoreService } from 'src/app/core/core.service';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { MaladiesService } from 'src/app/services/maladies/maladies.service';
+import { DescriptionComponent } from '../description/description.component';
 
 @Component({
   selector: 'app-preventions',
@@ -84,7 +85,7 @@ export class PreventionsComponent {
     const dialogRef = this.dialog.open(ConfirmationComponent, {
       data: {
         title: 'Confirmation',
-        message: 'Voulez-vous vraiment supprimer cette prévention ?',
+        message: 'Voulez-vous vraiment supprimer cette methode de prévention ?',
       },
     });
 
@@ -99,7 +100,7 @@ export class PreventionsComponent {
   performDeletePrevention(id: number) {
     this.preventionService.deletePrevention(id).subscribe({
       next: (res: any) => {
-        this.coreService.openSnackBar('Prévention supprimée avec succès !');
+        this.coreService.openSnackBar('Methode de prevention supprimée avec succès !');
         this.getPreventionList();
       },
       error: (err: any) => {
@@ -122,5 +123,23 @@ export class PreventionsComponent {
       },
     });
 
+  }
+
+  showFullDescription(id: number) {
+    // Basculer l'état de la description complète pour l'élément spécifique
+    this.dataSource.data = this.dataSource.data.map((row: any) => {
+      if (row.id === id) {
+        row.showFullDescription = !row.showFullDescription;
+      }
+      return row;
+    });
+  }
+
+  afficherPopup(description: string) {
+    this.dialog.open(DescriptionComponent, {
+      data: {
+        description: description,
+      },
+    });
   }
 }

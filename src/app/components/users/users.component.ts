@@ -93,7 +93,7 @@ export class UsersComponent implements OnInit {
   performUserPrevention(id: number) {
     this.userService.deleteUser(id).subscribe({
       next: (res: any) => {
-        this.coreService.openSnackBar('Prévention supprimée avec succès !');
+        this.coreService.openSnackBar('Utilisateur supprimée avec succès !');
         this.getUserList();
       },
       error: (err: any) => {

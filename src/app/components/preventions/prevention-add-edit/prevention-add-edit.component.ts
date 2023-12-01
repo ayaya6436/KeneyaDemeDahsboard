@@ -62,7 +62,7 @@ maladieList :any[] =[]
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Prevention mise à jour !');
+            this.coreService.openSnackBar('Methode de prevention mise à jour avec success !');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
@@ -76,7 +76,7 @@ maladieList :any[] =[]
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Prevention créée !');
+            this.coreService.openSnackBar('Methode de prevention créée avec success !');
             this.dialogRef.close(true);
             console.log(val);
           },

@@ -112,7 +112,7 @@ border: none;
 .sidenav-link-text{
   margin-left: 1.5rem;
   border-radius: 0.625rem;
-
+  color: #fff;
 
 }
 
@@ -135,15 +135,29 @@ border: none;
 
 }
 
-.sidenav-nav-link,
-.sidenav-link-text{
-  color: #535353;
+.sidenav-nav-link{
+  color: #000;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
+
+.sidenav-link-text{
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.active,
+.sidenav-nav-link:hover .sidenav-link-text,
+.sidenav-nav-item:hover .sidenav-link-text {
+  color: #fff;
+}
 
 .logout{
   display: flex;

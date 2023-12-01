@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h1>Nouvelle Methode de preventions</h1>
+  <h1>Nouvelle Zone</h1>
 </div>
 <form [formGroup]="zoneForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
   <div mat-dialog-content class="content">
@@ -7,7 +7,7 @@
       <div class="half-width">
         <mat-form-field appearance="outline">
           <mat-label>Nom</mat-label>
-          <input matInput type="text" placeholder="Ex. Paludisme" formControlName="nom" />
+          <input matInput type="text" placeholder="Ex. Bamako" formControlName="nom" />
         </mat-form-field>
       </div>
     </div>
@@ -50,4 +50,4 @@
     </button>
   </div>
 </form>
-@JsonManagedReference
+

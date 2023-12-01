@@ -54,7 +54,7 @@ maladieList :any[] =[]
   }
   onFormSubmit() {
     if (this.traitementForm.valid) {
-     
+
       if (this.data) {
         this.traitementService.updateTraitement(
           this.data.id,
@@ -63,7 +63,7 @@ maladieList :any[] =[]
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Traitement mise à jour !');
+            this.coreService.openSnackBar('Methode de traitement mise à jour avec success !');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
@@ -77,7 +77,7 @@ maladieList :any[] =[]
           this.audio,
         ).subscribe({
           next: (val: any) => {
-            this.coreService.openSnackBar('Traitement créée !');
+            this.coreService.openSnackBar('Methode de traitement créée avec success !');
             this.dialogRef.close(true);
             console.log(val);
           },
