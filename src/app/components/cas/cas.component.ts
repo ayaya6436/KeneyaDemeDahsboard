@@ -15,7 +15,7 @@ import { AnnonceAddEditComponent } from '../annonces/annonce-add-edit/annonce-ad
 })
 export class CasComponent {
 
-  displayedColumns: string[] = ['id', 'date','image','action'];
+  displayedColumns: string[] = ['id', 'date','numero','image','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -12,8 +12,14 @@
 
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero </th>
           <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+         <!-- ID Column -->
+         <ng-container matColumnDef="numero">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+          <td mat-cell *matCellDef="let row"> {{row.numero}} </td>
         </ng-container>
 
         <!-- titre Column -->
